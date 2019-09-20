@@ -1,0 +1,2 @@
+content     catkey    content/
+overlay chrome://messenger/content/messenger.xul chrome://catkey/content/myhelloworld.xul
