@@ -16,6 +16,7 @@
         "default_icon": "images/catkey.png"
     },
     "permissions": [
+        "messagesRead"
     ],
     "icons": {
         "32": "images/catkey.png"
