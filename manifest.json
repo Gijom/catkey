@@ -1,0 +1,23 @@
+{
+    "manifest_version": 2,
+    "name": "Catkey",
+    "description": "Outlook categories/keywords synchronization with tags",
+    "version": "1.0",
+    "author": "Gijom",
+    "applications": {
+        "gecko": {
+            "id": "catkey@gijom.me",
+            "strict_min_version": "66.0"
+        }
+    },
+    "browser_action": {
+        "default_popup": "popup.html",
+        "default_title": "Catkey",
+        "default_icon": "images/catkey.png"
+    },
+    "permissions": [
+    ],
+    "icons": {
+        "32": "images/catkey.png"
+    }
+}
