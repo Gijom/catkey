@@ -1,11 +1,6 @@
-el = document.getElementById("important");
-el.addEventListener("click", set_catkey);
-
-async function set_catkey() {
+async function set_catkey(tagKey, tagName) {
     console.log(browser);
     console.log('Got for it my catkey !');
-    let tagList = await browser.messages.listTags();
-    console.log(tagList);
 
     // Get selected messages
     let messageList = await browser.mailTabs.getSelectedMessages();
@@ -22,13 +17,28 @@ async function set_catkey() {
     
     let full_message = await browser.messages.getFull(message.id);
     console.log(full_message.headers);
-    full_message.headers.keywords = [tagList[0].tag];
+    full_message.headers.keywords = [tagName];
     ['from'].push('guillaume.chanel@unige.ch')
     console.log(full_message.headers);
     console.log(full_message.headers['from']);
     console.log(full_message.headers['keywords']);
-    browser.messages.archive([message.id]);
+    // browser.messages.archive([message.id]);
 
 
-    browser.messages.update(message.id, {tags: [tagList[0].key]});
+    browser.messages.update(message.id, {tags: [tagKey]});
 }
+
+async function generate_tags(el) {
+    let tagList = await browser.messages.listTags();
+    for (let tag of tagList) {
+        var inputnode = document.createElement("div");
+        inputnode.classList.add("button");
+        inputnode.innerText = tag.tag;
+        inputnode.style.backgroundColor = tag.color;
+        inputnode.addEventListener("click", function() { set_catkey(tag.key, tag.tag);});
+        el.appendChild(inputnode);
+    }
+}
+
+el = document.getElementById("tags");
+generate_tags(el);

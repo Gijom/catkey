@@ -3,5 +3,5 @@
     padding: 4px;
     text-align: center;
     cursor: pointer;
-    background-color: brown;
-  }
+    border-radius: 5px;
+}
